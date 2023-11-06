@@ -10,6 +10,7 @@ import {
   Payment,
   SuccessPayment,
 } from '../payment/model/payment.model';
+import { TokenModule } from '../token/token.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import {
         models: [User, Payment, SuccessPayment, FailedPayment],
       }),
     }),
+    TokenModule,
   ],
   controllers: [AppController],
   providers: [AppService],
