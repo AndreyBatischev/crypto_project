@@ -1,0 +1,15 @@
+export enum PaymentStatus {
+  PAID = 'paid',
+  PAID_OVER = 'paid_over',
+  WRONG_AMOUNT = 'wrong_amount',
+  PROCESS = 'process',
+  COMFIRM_CHECK = 'comfirm_check',
+  WRONG_AMOUNT_WAITING = 'wromg_amount_waiting',
+  mCHECK = 'check',
+  FAIL = 'fail',
+  CANCEL = 'cancel',
+  SYSTEM_FAIL = 'sistem_fail',
+  REFUND_PROCESS = 'refund_process',
+  REFUND_FAIL = 'refund_fail',
+  REFUND_PAID = 'refund_paid',
+}

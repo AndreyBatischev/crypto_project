@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TokenService } from './token.service';
 import { PassportModule } from '@nestjs/passport';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtStrategy } from 'src/strategy';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
   ],
-  providers: [TokenService, JwtService],
+  providers: [TokenService, JwtStrategy],
   exports: [TokenService],
 })
 export class TokenModule {}

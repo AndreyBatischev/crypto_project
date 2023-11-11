@@ -7,10 +7,17 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from '../users/model/user.model';
 import {
   FailedPayment,
+  FailedPayout,
   Payment,
+  Payout,
   SuccessPayment,
-} from '../payment/model/payment.model';
+  SuccessPayout,
+} from '../cryptomus/model/payment.model';
 import { TokenModule } from '../token/token.module';
+import { AuthModule } from '../auth/auth.module';
+import { UsersModule } from '../users/users.module';
+import { CryptomusModule } from '../cryptomus/cryptomus.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -30,10 +37,22 @@ import { TokenModule } from '../token/token.module';
         database: configService.get('db_database'),
         synchronize: true,
         autoLoadModels: true,
-        models: [User, Payment, SuccessPayment, FailedPayment],
+        models: [
+          User,
+          Payment,
+          SuccessPayment,
+          FailedPayment,
+          Payout,
+          SuccessPayout,
+          FailedPayout,
+        ],
       }),
     }),
+    ScheduleModule.forRoot(),
     TokenModule,
+    AuthModule,
+    UsersModule,
+    CryptomusModule,
   ],
   controllers: [AppController],
   providers: [AppService],

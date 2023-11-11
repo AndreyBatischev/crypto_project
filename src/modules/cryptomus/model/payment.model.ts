@@ -13,7 +13,7 @@ export class Payment extends Model {
   uuid: string;
 
   @Column
-  amount: string;
+  amount: number;
 
   @Column
   currency: string;
@@ -22,13 +22,10 @@ export class Payment extends Model {
   status: string;
 
   @Column
+  paymentUrl: string;
+
+  @Column
   isFinal: boolean;
-
-  @Column
-  address: string;
-
-  @Column
-  network: string;
 }
 
 @Table
@@ -40,7 +37,7 @@ export class SuccessPayment extends Model {
   uuid: string;
 
   @Column
-  amount: string;
+  amount: number;
 
   @Column
   currency: string;
@@ -67,20 +64,95 @@ export class FailedPayment extends Model {
   uuid: string;
 
   @Column
-  amount: string;
+  amount: number;
 
   @Column
   currency: string;
 
+  @ForeignKey(() => User)
+  user: User;
+}
+
+@Table
+export class Payout extends Model {
+  @ForeignKey(() => User)
+  user: User;
+
   @Column
-  status: string;
+  order_id: string;
+
+  @Column
+  uuid: string;
+
+  @Column
+  amount: number;
 
   @Column
   address: string;
 
   @Column
-  network: string;
+  status: string;
 
+  @Column
+  currency: string;
+
+  @Column
+  isFinal: string;
+
+  @Column
+  network: string;
+}
+
+@Table
+export class SuccessPayout extends Model {
   @ForeignKey(() => User)
   user: User;
+
+  @Column
+  order_id: string;
+
+  @Column
+  uuid: string;
+
+  @Column
+  amount: number;
+
+  @Column
+  address: string;
+
+  @Column
+  status: string;
+
+  @Column
+  currency: string;
+
+  @Column
+  network: string;
+}
+
+@Table
+export class FailedPayout extends Model {
+  @ForeignKey(() => User)
+  user: User;
+
+  @Column
+  order_id: string;
+
+  @Column
+  uuid: string;
+
+  @Column
+  amount: number;
+
+  @Column
+  address: string;
+
+  @Column
+  status: string;
+
+  @Column
+  currency: string;
+
+  @Column
+  network: string;
 }

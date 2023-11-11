@@ -3,7 +3,7 @@ import {
   FailedPayment,
   Payment,
   SuccessPayment,
-} from 'src/modules/payment/model/payment.model';
+} from 'src/modules/cryptomus/model/payment.model';
 
 @Table
 export class User extends Model {
